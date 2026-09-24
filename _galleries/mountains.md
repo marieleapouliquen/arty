@@ -1,7 +1,7 @@
 ---
 title: Mountains
 description: mountains
-permalink: /
+permalink: /mountains/
 display: rows 
 captions: false
 show_title: false
