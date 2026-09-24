@@ -1,7 +1,8 @@
 ---
 title: Flowers
 description: flowers
-display: grid # rows 
+permalink: /
+display: rows 
 captions: false
 show_title: false
 image: /assets/img/works/full/dscf0082.jpg
