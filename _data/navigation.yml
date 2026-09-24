@@ -5,10 +5,8 @@
 
 - group: carnets
   items:
-    - title: d'après nature
-      url: /d-apres-nature/
-    - title: études
-      url: /etudes/
+    - title: flowers
+      url: /flowers/
 
 - title: actualités
   url: /
