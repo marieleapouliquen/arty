@@ -19,18 +19,6 @@ works:
     medium: 
     width: 900
     height: 675
-  - file: 20171004-144700.jpg
-    title: 
-    year: 
-    medium: 
-    width: 900
-    height: 675
-  - file: 20171004-144702.jpg
-    title: 
-    year: 
-    medium: 
-    width: 900
-    height: 675
   - file: 20171004-144801.jpg
     title: 
     year: 
@@ -44,12 +32,6 @@ works:
     width: 900
     height: 675
   - file: 20171005-124538.jpg
-    title: 
-    year: 
-    medium: 
-    width: 900
-    height: 675
-  - file: 20171005-124543.jpg
     title: 
     year: 
     medium: 
