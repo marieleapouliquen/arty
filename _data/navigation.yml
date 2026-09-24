@@ -5,10 +5,16 @@
 
 - group: photographie
   items:
+    - title: adk
+      url: /adk/
+    - title: autumn
+      url: /autumn/
     - title: flowers
       url: /
     - title: mountains
       url: /mountains/
+    - title: water
+      url: /water/
 
 #- group: peinture et dessin
 #  items:
