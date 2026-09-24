@@ -13,12 +13,6 @@ works:
     medium:
     width: 900
     height: 506
-  - file: ctb-2016-018.jpg
-    title:
-    year:
-    medium:
-    width: 900
-    height: 506
   - file: ctb-2016-022.jpg
     title:
     year:
