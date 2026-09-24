@@ -3,10 +3,13 @@
 # un élément avec `title` + `url` est un lien simple.
 # Les URL commencent par « / » : le baseurl est ajouté automatiquement.
 
-- group: carnets
+- group: photographie
   items:
     - title: flowers
       url: /flowers/
+
+#- group: peinture et dessin
+#  items:
 
 #- title: actualités
 #  url: /
