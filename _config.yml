@@ -1,0 +1,70 @@
+# ---------------------------------------------------------------
+#  Portfolio artistique, Jekyll / GitHub Pages
+#  Mise en page inspirée du modèle « Order » de Format :
+#  colonne de navigation fixe à gauche, œuvres en grille, visionneuse.
+# ---------------------------------------------------------------
+
+title: "Marie-Léa Pouliquen"
+tagline: "Carnets artistiques"          # sous le nom, dans la colonne ; laisser vide pour masquer
+description: "Encre, craie, huile, acrylique, aquarelle : carnets artistiques de Marie-Léa Pouliquen."
+author: "Marie-Léa Pouliquen"
+lang: fr
+locale: fr_FR
+timezone: Europe/Paris
+
+# --- Adresse du site ------------------------------------------------
+# Cas 1 : dépôt de projet (ex. dépôt « arty »), sans domaine propre
+#         -> url: "https://www.marieleapouliquen.com"  baseurl: "/arty"
+#            (le domaine du site utilisateur s'applique aussi aux dépôts de projet)
+# Cas 2 : domaine dédié (ex. www.mlykscorner.fr) via un fichier CNAME
+#         -> url: "https://www.mlykscorner.fr"         baseurl: ""
+url: "https://www.marieleapouliquen.com"
+baseurl: "/arty"
+
+# --- Liens externes (colonne de gauche) --------------------------------
+social:
+  - label: instagram
+    url: ""                              # ex. https://www.instagram.com/…
+  - label: site académique
+    url: "https://www.marieleapouliquen.com"
+contact_email: ""                        # affiché sur la page « à propos » si renseigné
+
+# --- Images ------------------------------------------------------------
+works_path: /assets/img/works           # contient full/ (grand format) et thumbs/ (vignettes)
+protect_images: true                    # désactive clic droit et glisser-déposer sur les images (dissuasif, pas une protection)
+noai: true                              # ajoute <meta name="robots" content="noai, noimageai">
+copyright_start: 2019                   # « © 2019–2026 » ; laisser vide pour n'afficher que l'année en cours
+
+# --- Collections ---------------------------------------------------------
+collections:
+  galleries:
+    output: true
+    permalink: /:name/
+
+defaults:
+  - scope: { path: "", type: galleries }
+    values: { layout: gallery }
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "" }
+    values: { layout: page }
+
+permalink: /actualites/:year/:title/
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  smart_quotes: ["apos", "apos", "laquo", "raquo"]
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - tools/
+  - sources/
+  - vendor/
+  - .jekyll-cache/

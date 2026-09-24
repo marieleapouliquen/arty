@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<article class="page prose">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {% if page.venue %}<p class="entry__venue">{{ page.venue }}</p>{% endif %}
+  {% if page.image %}<p><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}"></p>{% endif %}
+  {{ content }}
+  <p class="back"><a href="{{ '/' | relative_url }}">retour aux actualités</a></p>
+</article>

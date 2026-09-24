@@ -1,0 +1,245 @@
+/* ==========================================================
+   Portfolio artistique, feuille de style unique
+   Tout se règle depuis les variables ci-dessous.
+   ========================================================== */
+
+:root {
+  --paper: #ffffff;        /* fond : blanc neutre, pour ne pas teinter les œuvres */
+  --ink: #23272e;          /* texte : encre gris bleuté */
+  --muted: #80858d;        /* liens inactifs, légendes */
+  --rule: #e6e6e3;         /* filets de séparation */
+  --veil: rgba(255, 255, 255, 0.97); /* fond de la visionneuse */
+
+  --font: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --size: 15px;
+  --leading: 1.55;
+
+  --side: 17rem;           /* largeur de la colonne de gauche */
+  --pad: 2.75rem;          /* marges extérieures (bureau) */
+  --gap: 2rem;             /* espace entre les œuvres */
+  --row-h: 16rem;          /* hauteur de référence en mode « rows » */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--size)/var(--leading) var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+
+:focus-visible { outline: 1.5px solid var(--ink); outline-offset: 3px; }
+
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--paper); padding: 0.5rem 1rem; z-index: 100;
+}
+.skip:focus { left: 1rem; top: 1rem; }
+
+/* ---------- Structure générale ---------- */
+
+.shell { min-height: 100vh; }
+
+.main { padding: 1.25rem 1.25rem 4rem; }
+
+@media (min-width: 900px) {
+  .shell { display: grid; grid-template-columns: var(--side) minmax(0, 1fr); }
+  .main { padding: var(--pad) var(--pad) 6rem 0; }
+}
+
+/* ---------- Colonne de gauche ---------- */
+
+.sidebar {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--paper);
+  padding: 1rem 1.25rem;
+}
+
+.sidebar__top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 1rem; }
+
+.sidebar__name {
+  font-size: 1.07rem; font-weight: 500; letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+.sidebar__name:hover { text-decoration: none; }
+
+.sidebar__tagline {
+  margin: 0; color: var(--muted); font-size: 0.93rem;
+  flex-basis: 100%; order: 3;
+}
+
+.sidebar__toggle { margin-left: auto; color: var(--muted); }
+.sidebar__toggle[aria-expanded="true"] { color: var(--ink); }
+
+.sidebar__panel { display: none; padding: 1.5rem 0 0.5rem; }
+.sidebar.is-open .sidebar__panel { display: block; }
+
+.nav, .nav ul, .social { list-style: none; margin: 0; padding: 0; }
+
+.nav > li { margin-bottom: 0.9rem; }
+.nav a { color: var(--muted); }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--ink); }
+.nav a[aria-current="page"] { text-decoration: none; }
+
+.nav__label { display: block; margin-bottom: 0.15rem; }
+.nav__group ul { padding-left: 0.9rem; }
+.nav__group li { margin: 0.1rem 0; }
+
+.social { margin-top: 2rem; }
+.social a { color: var(--muted); }
+.social a:hover { color: var(--ink); }
+
+.sidebar__copy { margin: 1.5rem 0 0; color: var(--muted); font-size: 0.8rem; }
+
+@media (min-width: 900px) {
+  .sidebar {
+    height: 100vh; overflow-y: auto;
+    display: flex; flex-direction: column;
+    padding: var(--pad) 2rem var(--pad) var(--pad);
+  }
+  .sidebar__top { display: block; }
+  .sidebar__tagline { margin-top: 0.1rem; }
+  .sidebar__toggle { display: none; }
+  .sidebar__panel { display: flex; flex-direction: column; flex: 1; padding-top: 2.75rem; }
+  .sidebar__copy { margin-top: auto; padding-top: 2rem; }
+}
+
+/* ---------- Galeries ---------- */
+
+.works { list-style: none; margin: 0; padding: 0; }
+.work { margin: 0; }
+.work__link { display: block; cursor: zoom-in; }
+.work__link img { width: 100%; background: #f3f3f1; }
+
+.work__cap { margin: 0.55rem 0 0; font-size: 0.85rem; color: var(--muted); line-height: 1.45; }
+.cap__title { font-style: italic; }
+.cap__meta, .cap__note { display: block; }
+
+/* grid : colonnes en quinconce, proportions respectées */
+.works--grid { columns: 2; column-gap: 0.9rem; }
+.works--grid .work { break-inside: avoid; margin-bottom: 0.9rem; }
+@media (min-width: 600px)  { .works--grid { column-gap: var(--gap); } .works--grid .work { margin-bottom: var(--gap); } }
+@media (min-width: 1300px) { .works--grid { columns: 3; } }
+@media (min-width: 1900px) { .works--grid { columns: 4; } }
+.works--grid.works--captioned .work { margin-bottom: calc(var(--gap) * 1.25); }
+
+/* rows : lignes justifiées (nécessite width/height dans le front matter) */
+.works--rows { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.works--rows .work { flex: calc(var(--r, 1) * 100) 1 calc(var(--r, 1) * var(--row-h)); }
+.works--rows .work img { width: 100%; aspect-ratio: var(--r, auto); object-fit: cover; }
+.works--rows::after { content: ""; flex: 999 1 0; }
+
+/* stack : une œuvre par ligne, grand format */
+.works--stack { max-width: 62rem; }
+.works--stack .work { margin-bottom: 4.5rem; }
+.works--stack .work img { width: auto; max-height: 86vh; }
+
+@media (max-width: 599px) {
+  .works--grid.works--captioned { columns: 1; }
+}
+
+/* ---------- Actualités (accueil) ---------- */
+
+.feed { max-width: 46rem; }
+
+.entry { padding-bottom: 3.25rem; margin-bottom: 3.25rem; border-bottom: 1px solid var(--rule); }
+.entry:last-child { border-bottom: 0; }
+
+.entry__media { display: block; margin-bottom: 1.1rem; cursor: zoom-in; }
+.entry__media img { width: 100%; }
+
+.entry__title { font-size: 1rem; font-weight: 500; margin: 0; }
+.entry__venue { margin: 0.1rem 0 0.8rem; color: var(--muted); }
+
+/* ---------- Pages de texte ---------- */
+
+.page { max-width: 36rem; }
+.page-title { font-size: 1rem; font-weight: 500; margin: 0 0 1.75rem; }
+
+.intro { max-width: 36rem; margin-bottom: 2.5rem; }
+
+.prose p { margin: 0 0 0.9em; }
+.prose a { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; text-decoration-color: var(--muted); }
+.prose a:hover { text-decoration-color: var(--ink); }
+.prose h2, .prose h3 { font-size: 1rem; font-weight: 500; margin: 2em 0 0.5em; }
+.prose img { margin: 1.5rem 0; }
+.prose ul { padding-left: 1.1em; }
+
+.back { margin-top: 3rem; color: var(--muted); }
+.empty { color: var(--muted); }
+
+/* ---------- Visionneuse ---------- */
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 50;
+  background: var(--veil);
+  display: grid; grid-template-rows: auto minmax(0, 1fr);
+}
+.lightbox[hidden] { display: none; }
+
+.lightbox__bar {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 1rem 1.25rem; color: var(--muted);
+}
+.lightbox__close:hover { color: var(--ink); }
+
+.lightbox__stage {
+  margin: 0; min-height: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 0 1rem 1.25rem;
+}
+
+.lightbox__img {
+  max-width: 100%; max-height: calc(100vh - 9rem);
+  width: auto; height: auto; object-fit: contain;
+  transition: opacity 180ms ease;
+}
+.lightbox__img.is-loading { opacity: 0; }
+
+.lightbox__caption {
+  margin-top: 0.9rem; font-size: 0.87rem; color: var(--muted); text-align: center;
+  max-width: 40rem; line-height: 1.45;
+}
+
+.lightbox__nav {
+  position: absolute; top: 3.5rem; bottom: 3.5rem; width: 18%;
+  display: flex; align-items: center; padding: 0 1.25rem;
+  color: var(--muted); font-size: 2.2rem; font-weight: 400; line-height: 1;
+}
+.lightbox__nav:hover { color: var(--ink); }
+.lightbox__nav--prev { left: 0; justify-content: flex-start; }
+.lightbox__nav--next { right: 0; justify-content: flex-end; }
+.lightbox.is-single .lightbox__nav, .lightbox.is-single .lightbox__count { visibility: hidden; }
+
+@media (min-width: 900px) {
+  .lightbox__bar { padding: 1.5rem var(--pad); }
+  .lightbox__stage { padding: 0 6rem 2rem; }
+  .lightbox__nav { padding: 0 var(--pad); }
+}
+
+@media (max-width: 599px) {
+  .lightbox__nav { font-size: 1.8rem; width: 25%; }
+}
+
+/* ---------- Protection légère ---------- */
+
+[data-protect] img { -webkit-user-drag: none; user-select: none; -webkit-touch-callout: none; }
+
+/* ---------- Mouvement réduit ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+body.lightbox-open { overflow: hidden; }

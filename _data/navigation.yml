@@ -1,0 +1,17 @@
+# Menu de la colonne de gauche.
+# Un élément avec `group` forme une rubrique (intitulé non cliquable + liens en retrait),
+# un élément avec `title` + `url` est un lien simple.
+# Les URL commencent par « / » : le baseurl est ajouté automatiquement.
+
+- group: carnets
+  items:
+    - title: d'après nature
+      url: /d-apres-nature/
+    - title: études
+      url: /etudes/
+
+- title: actualités
+  url: /
+
+- title: à propos
+  url: /a-propos/

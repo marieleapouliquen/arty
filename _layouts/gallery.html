@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{%- assign base = site.works_path | relative_url -%}
+{%- assign style = page.display | default: "grid" -%}
+<section class="gallery-page">
+  {% if page.show_title != false %}<h1 class="page-title">{{ page.title }}</h1>{% endif %}
+  {%- assign intro = content | strip_html | strip -%}
+  {% if intro != "" %}<div class="intro prose">{{ content }}</div>{% endif %}
+
+  <ul class="works works--{{ style }}{% if page.captions %} works--captioned{% endif %}" data-gallery>
+    {%- for w in page.works -%}
+    {%- capture cap -%}{% include caption.html work=w %}{%- endcapture -%}
+    {%- assign alt = w.alt | default: w.title | default: page.title -%}
+    <li class="work"{% if w.width and w.height %} style="--r: {{ w.width | times: 1.0 | divided_by: w.height | round: 3 }}"{% endif %}>
+      <a href="{{ base }}/full/{{ w.file }}" class="work__link" data-caption="{{ cap | strip | escape }}">
+        <img src="{{ base }}/thumbs/{{ w.file }}" alt="{{ alt | escape }}"
+             {% if w.width %}width="{{ w.width }}" height="{{ w.height }}"{% endif %}
+             loading="{% if forloop.index <= 6 %}eager{% else %}lazy{% endif %}" decoding="async">
+      </a>
+      {% if page.captions %}<p class="work__cap">{{ cap }}</p>{% endif %}
+    </li>
+    {%- endfor -%}
+  </ul>
+</section>

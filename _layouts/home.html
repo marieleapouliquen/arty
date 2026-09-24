@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<section class="feed">
+  {%- assign intro = content | strip_html | strip -%}
+  {% if intro != "" %}<div class="intro prose">{{ content }}</div>{% endif %}
+  {%- for post in site.posts -%}
+  <article class="entry">
+    {%- if post.image -%}
+    {%- assign img = post.image | relative_url -%}
+    <a class="entry__media" href="{{ img }}" data-caption="{{ post.title | escape }}">
+      <img src="{{ img }}" alt="{{ post.image_alt | default: post.title | escape }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" decoding="async">
+    </a>
+    {%- endif -%}
+    <div class="entry__text prose">
+      <h2 class="entry__title">{% if post.content != "" and post.full_page %}<a href="{{ post.url | relative_url }}">{{ post.title }}</a>{% else %}{{ post.title }}{% endif %}</h2>
+      {% if post.venue %}<p class="entry__venue">{{ post.venue }}</p>{% endif %}
+      {{ post.content }}
+    </div>
+  </article>
+  {%- else -%}
+  <p class="empty">Ajoutez un fichier dans <code>_posts/</code> pour publier une première actualité.</p>
+  {%- endfor -%}
+</section>

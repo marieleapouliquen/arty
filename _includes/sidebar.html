@@ -1,0 +1,42 @@
+{%- assign current = page.url | relative_url -%}
+<header class="sidebar">
+  <div class="sidebar__top">
+    <a class="sidebar__name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    {% if site.tagline and site.tagline != "" %}<p class="sidebar__tagline">{{ site.tagline }}</p>{% endif %}
+    <button class="sidebar__toggle" type="button" aria-expanded="false" aria-controls="site-nav">menu</button>
+  </div>
+
+  <div class="sidebar__panel" id="site-nav">
+    <nav aria-label="Navigation principale">
+      <ul class="nav">
+        {%- for entry in site.data.navigation -%}
+          {%- if entry.group -%}
+          <li class="nav__group">
+            <span class="nav__label">{{ entry.group }}</span>
+            <ul>
+              {%- for item in entry.items -%}
+              {%- assign href = item.url | relative_url -%}
+              <li><a href="{{ href }}"{% if href == current %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </li>
+          {%- else -%}
+          {%- assign href = entry.url | relative_url -%}
+          <li><a href="{{ href }}"{% if href == current %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <ul class="social">
+      {%- for s in site.social -%}
+        {%- if s.url and s.url != "" -%}
+        <li><a href="{{ s.url }}" rel="noopener" target="_blank">{{ s.label }}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+
+    {%- assign year = site.time | date: "%Y" -%}
+    <p class="sidebar__copy">©&nbsp;{% if site.copyright_start and site.copyright_start != "" %}{{ site.copyright_start }}–{% endif %}{{ year }} {{ site.author }}</p>
+  </div>
+</header>

@@ -1,0 +1,4 @@
+{%- assign w = include.work -%}
+{%- if w.title -%}<span class="cap__title">{{ w.title }}</span>{% if w.year %}, {{ w.year }}{% endif %}{%- elsif w.year -%}{{ w.year }}{%- endif -%}
+{%- if w.medium or w.dimensions -%}<span class="cap__meta">{{ w.medium }}{% if w.medium and w.dimensions %}, {% endif %}{{ w.dimensions }}</span>{%- endif -%}
+{%- if w.note -%}<span class="cap__note">{{ w.note }}</span>{%- endif -%}
