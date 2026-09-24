@@ -131,7 +131,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .works--grid .work { break-inside: avoid; margin-bottom: 0.9rem; }
 @media (min-width: 600px)  { .works--grid { column-gap: var(--gap); } .works--grid .work { margin-bottom: var(--gap); } }
 @media (min-width: 1300px) { .works--grid { columns: 3; } }
-@media (min-width: 1900px) { .works--grid { columns: 4; } }
+@media (min-width: 900px)  { .gallery-page { max-width: 90rem; } }
+@media (min-width: 1600px) { :root { --row-h: 20rem; } }
 .works--grid.works--captioned .work { margin-bottom: calc(var(--gap) * 1.25); }
 
 /* rows : lignes justifiées (nécessite width/height dans le front matter) */
