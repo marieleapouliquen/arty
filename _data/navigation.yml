@@ -8,8 +8,8 @@
     - title: flowers
       url: /flowers/
 
-- title: actualités
-  url: /
+#- title: actualités
+#  url: /
 
 - title: à propos
   url: /a-propos/
