@@ -16,11 +16,14 @@
     - title: water
       url: /water/
 
-#- group: peinture et dessin
-#  items:
-
-#- title: actualités
-#  url: /
+- group: peinture et dessin
+  items:
+  - title: clay
+      url: /clay/
+  - title: oil
+      url: /oil/
+  #- title: watercolor
+  #    url: /watercolor/
 
 - title: à propos
   url: /a-propos/
