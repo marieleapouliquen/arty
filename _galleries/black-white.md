@@ -1,8 +1,8 @@
 ---
-title: Black \& White
+title: "Black & White"
 description: black-white
 permalink: /black-white/
-display: rows 
+display: grid 
 captions: false
 show_title: false
 image: /assets/img/works/full/dscf1059.jpg
