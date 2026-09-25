@@ -2,7 +2,7 @@
 title: Oil
 description: oil
 permalink: /oil/
-display: rows 
+display: stack 
 captions: false
 show_title: false
 image: /assets/img/works/full/dscf1076.jpg
