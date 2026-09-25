@@ -18,8 +18,8 @@
 
 - group: peinture et dessin
   items:
-   - title: clay
-     url: /clay/
+   - title: black & white
+     url: /black-white/
    - title: oil
      url: /oil/
   #- title: watercolor

@@ -1,7 +1,7 @@
 ---
-title: Clay
-description: clay
-permalink: /
+title: Black \& White
+description: black-white
+permalink: /black-white/
 display: rows 
 captions: false
 show_title: false

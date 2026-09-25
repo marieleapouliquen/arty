@@ -1,7 +1,7 @@
 ---
 title: Oil
 description: oil
-permalink: /
+permalink: /oil/
 display: rows 
 captions: false
 show_title: false
