@@ -2,7 +2,7 @@
 title: "Black & White"
 description: black-white
 permalink: /black-white/
-display: grid 
+display: wall 
 captions: false
 show_title: false
 image: /assets/img/works/full/dscf1059.jpg
