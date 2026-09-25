@@ -18,10 +18,10 @@
 
 - group: peinture et dessin
   items:
-  - title: clay
-      url: /clay/
-  - title: oil
-      url: /oil/
+   - title: clay
+     url: /clay/
+   - title: oil
+     url: /oil/
   #- title: watercolor
   #    url: /watercolor/
 
